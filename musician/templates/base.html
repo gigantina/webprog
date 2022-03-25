@@ -24,8 +24,20 @@
                 <a class="nav-link" href="#">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Войти</a>
+                <a class="nav-link" href="{% url 'faq' %}">Как это работает</a>
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">{{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Добавить исполнение</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Войти</a>
+            </li>
+            {% endif %}
 
             <!-- Dropdown
             <li class="nav-item dropdown">
@@ -44,7 +56,6 @@
 </header>
 
 <main>
-    Здесь основная часть страницы
     {% block content %}
     {% endblock %}
 </main>
