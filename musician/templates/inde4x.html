@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+
+<div class="container px-4 px-lg-5">
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0"
+                                   src="{% static 'main/misterjohnsmusic-piano.jpg' %}" alt="..."/></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Pianohelper</h1>
+            <p>Pianohelper - инструмент, позволяющий пользователям электронных пианино и синтезаторов улучшить свои
+                навыки игры. Как именно? Предположим, вы захотели выучить Полонез Огинского, но вы часто делаете ошибки
+                в нотах и сбиваетесь в темпе. В этом поможет Pianohelper, вы находите или загружаете свой MIDI-файл -
+                идеальный образец исполнения. Затем вы играете произведение на своем инструменте. Сейчас практически все
+                синтезаторы поддерживают запись и экспорт MIDI своей игры. Вы загружаете свой файл на сайт, он проверяет
+                его на соответствие идеальному выступлению. Вы можете опубликовать свою игру, люди могут ставить на нее
+                рейтинг. Отслеживайте свой прогресс, совершенствуйте свою игру!</p>
+            <a class="btn btn-primary" href="{% url 'login' %}">Зарегестрироваться</a>
+        </div>
+    </div>
+    <!-- Call to Action-->
+    <div class="card text-white bg-secondary my-5 py-4 text-center">
+        <div class="card-body"><p class="text-white m-0">Администрация сайта не несет ответственности за ваши действия. Используйте только лицензионный музыкальный контент!</p></div>
+    </div>
+    <!-- Content Row-->
+    <div class="row gx-4 gx-lg-5">
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">База жанров</h2>
+                    <p class="card-text">Взгляните на жанры, что у нас есть. Пишите нам, чтобы предложить свой жанр</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'genres' %}">Перейти</a></div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">База композиторов</h2>
+                    <p class="card-text">Воспользуйтесь созданием композитора в личном кабинете, он будет добавлен после модерации</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'authors' %}">Перейти</a></div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">База произведений</h2>
+                    <p class="card-text">Воспользуйтесь созданием произведения в личном кабинете, оно будет добавлен после модерации</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'compositions' %}">Перейти</a></div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">База исполнений</h2>
+                    <p class="card-text">База исполений содержит в себе лишь небольшое количество произведений, это связано с законами об авторских правах. Для разучивания своих произведений загрузите идеальное исполнение на ваше усмотрение</p>
+                </div>
+                <div class="card-footer"><a class="btn btn-primary btn-sm" href="{% url 'perfomances' %}">Перейти</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
