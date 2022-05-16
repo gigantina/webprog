@@ -8,7 +8,7 @@
 
 <div class="container">
 
-    <h1 class="font-weight-light center">{{ name_table }}</h1>
+    <h1 class="font-weight-light center">Жанры</h1>
 
     <table class="table">
   <thead class="thead-dark">
@@ -21,9 +21,8 @@
   <tbody>
     {% for object in objects %}
     <tr>
-      {% for key, value in object.items %}
-      <td>{{ value }}</td>
-      {% endfor %}
+      <th>{{ object.id }}</th>
+      <td>{{ object.name_genre }}</td>
     </tr>
     {% endfor %}
   </tbody>

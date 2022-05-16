@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <h1 class="font-weight-light center">Исполнения</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            {% for title_ in titles %}
+            <th scope="col">{{ title_ }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+        <tr>
+            <th>{{ object.id }}</th>
+            <td>{{ object.composition.name_composition }}</td>
+            {% if object.is_ideal %}
+                <td>Образец</td>
+            {% else %}
+                <td>{{ object.author.first_name }}</td>
+            {% endif %}
+            {% if object.path %}
+                <td>{{ object.path }}</td>
+            {% else %}
+                <td>Путь недоступен</td>
+            {% endif %}
+            <td>{{ object.datetime }}</td>
+            {% if object.is_ideal %}
+                <td>Да</td>
+            {% else %}
+                <td>Нет</td>
+            {% endif %}
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{%endblock%}

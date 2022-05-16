@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <h1 class="font-weight-light center">Произведения</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            {% for title_ in titles %}
+            <th scope="col">{{ title_ }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for object in objects %}
+        <tr>
+            <th>{{ object.id }}</th>
+            <td>{{ object.name_composition }}</td>
+            <td>{{ object.genre.name_genre }}</td>
+            <td>{{ object.author.name }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{%endblock%}
