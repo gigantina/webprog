@@ -22,9 +22,9 @@
         {% for object in objects %}
         <tr>
             <th>{{ object.id }}</th>
-            <td>{{ object.name_composition }}</td>
+            <td><a class="link-dark" href="{% url 'composition' composition_id=object.id %}">{{ object.name_composition }}</a></td>
             <td>{{ object.genre.name_genre }}</td>
-            <td>{{ object.author.name }}</td>
+            <td><a class="link-dark" href="{% url 'author' author_id=object.author.id %}">{{ object.author.name }}</a></td>
         </tr>
         {% endfor %}
         </tbody>

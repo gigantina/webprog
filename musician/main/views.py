@@ -61,6 +61,21 @@ def compositions(request):
 
     return render(request, 'composition_table.html', context)
 
+def composition(request, composition_id):
+    composition_object = Compositions.objects.filter(id=composition_id)[0]
+    perfomances_list = list(Perfomances.objects.filter(composition=composition_object))
+    print(perfomances_list)
+    name_table = 'Произведения'
+    context = {}
+    context['name_table'] = name_table
+    context['objects'] = perfomances_list
+    context['composition'] = composition_object
+    context['titles'] = ['#', 'Исполнитель', 'Путь', 'Дата', 'Идеальное выступление']
+
+    context['columns_names'] = [i.name for i in Perfomances._meta.get_fields() if i.name != 'name']
+
+    return render(request, 'composition.html', context)
+
 
 def perfomances(request):
     perfomances_list = list(Perfomances.objects.all())

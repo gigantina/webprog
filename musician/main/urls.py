@@ -9,5 +9,6 @@ urlpatterns = [
     path('compositions', views.compositions, name='compositions'),
     path('authors', views.authors, name='authors'),
     path('authors/<int:author_id>/', views.author, name='author'),
-    path('perfomances', views.perfomances, name='perfomances')
+    path('perfomances', views.perfomances, name='perfomances'),
+    path('compositions/<int:composition_id>/', views.composition, name='composition')
 ]
