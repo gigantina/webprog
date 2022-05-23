@@ -3,7 +3,7 @@ from .models import Genre, Authors, Compositions, Perfomances
 
 
 def index(request):
-    return render(request, 'inde4x.html')
+    return render(request, 'index.html')
 
 
 def faq(request):
@@ -33,6 +33,19 @@ def authors(request):
     context['columns_names'] = [i.name for i in Authors._meta.get_fields()]
 
     return render(request, 'author_table.html', context)
+
+
+def author(request, author_id):
+    author_object = Authors.objects.filter(id=author_id)[0]
+    context = {}
+    compositions_list = list(Compositions.objects.filter(author=author_object))
+    print(author_object)
+    print(compositions_list)
+    context['objects'] = compositions_list
+    context['author'] = author_object
+    context['titles'] = ['#', 'Название', 'Жанр']
+
+    return render(request, 'author.html', context)
 
 
 def compositions(request):

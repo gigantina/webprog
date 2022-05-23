@@ -26,7 +26,7 @@
             {% if object.is_ideal %}
                 <td>Образец</td>
             {% else %}
-                <td>{{ object.author.first_name }}</td>
+                <td>{{ object.user.username }}</td>
             {% endif %}
             {% if object.path %}
                 <td>{{ object.path }}</td>

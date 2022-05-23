@@ -8,7 +8,9 @@
 
 <div class="container">
 
-    <h1 class="font-weight-light center">Авторы</h1>
+    <h1 class="font-weight-light center">{{ author.name }}</h1>
+
+    <p>{{ author.description }}</p>
 
     <table class="table">
         <thead class="thead-dark">
@@ -22,13 +24,12 @@
         {% for object in objects %}
         <tr>
             <th>{{ object.id }}</th>
-            <td><a href="{% url 'author' author_id=object.id %}">{{ object.name }}</a></td>
-            <td>{{ object.description }}</td>
+            <td>{{ object.name_composition }}</td>
+            <td>{{ object.genre.name_genre }}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-
 </div>
 
 {%endblock%}
