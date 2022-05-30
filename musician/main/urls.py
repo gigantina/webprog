@@ -10,5 +10,9 @@ urlpatterns = [
     path('authors', views.authors, name='authors'),
     path('authors/<int:author_id>/', views.author, name='author'),
     path('perfomances', views.perfomances, name='perfomances'),
-    path('compositions/<int:composition_id>/', views.composition, name='composition')
+    path('compositions/<int:composition_id>/', views.composition, name='composition'),
+    path('new-perfomance/', views.PerfomanceCreateView.as_view(), name='new-perfomance'),
+    path('new-composition/', views.CompositionCreateView.as_view(), name='new-composition'),
+    path('new-genre/', views.GenreCreateView.as_view(), name='new-genre'),
+    path('new-author/', views.AuthorCreateView.as_view(), name='new-author'),
 ]

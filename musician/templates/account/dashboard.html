@@ -5,5 +5,9 @@
 {% block content %}
     <h1>Личный кабинет</h1>
     <p>Добро пожаловать, {{ user.first_name }}</p>
+<a class="btn btn-primary btn-sm" href="{% url 'new-perfomance' %}">Добавить исполнение</a>
+<a class="btn btn-primary btn-sm" href="{% url 'new-composition' %}">Добавить произведение</a>
+<a class="btn btn-primary btn-sm" href="{% url 'new-genre' %}">Добавить жанр</a>
+<a class="btn btn-primary btn-sm" href="{% url 'new-author' %}">Добавить автора</a>
 <a href="{% url 'logout' %}">Выйти</a>
 {% endblock %}

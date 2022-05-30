@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from .models import Genre, Authors, Compositions, Perfomances
+from .forms import PerfomanceForm, CompositionForm, GenreForm, AuthorForm
+from django.views.generic.edit import CreateView
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 
 
 def index(request):
@@ -61,6 +65,7 @@ def compositions(request):
 
     return render(request, 'composition_table.html', context)
 
+
 def composition(request, composition_id):
     composition_object = Compositions.objects.filter(id=composition_id)[0]
     perfomances_list = list(Perfomances.objects.filter(composition=composition_object))
@@ -87,3 +92,59 @@ def perfomances(request):
     context['columns_names'] = [i.name for i in Perfomances._meta.get_fields()]
 
     return render(request, 'perfomances_table.html', context)
+
+
+class PerfomanceCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        context = {'form': PerfomanceForm()}
+        return render(request, 'create.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = PerfomanceForm(request.POST)
+        if form.is_valid():
+            perfomance = form.save()
+            perfomance.save()
+            return HttpResponseRedirect(reverse_lazy('perfomances'))
+        return render(request, 'create.html', {'form': form})
+
+
+class CompositionCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        context = {'form': CompositionForm()}
+        return render(request, 'create.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = CompositionForm(request.POST)
+        if form.is_valid():
+            composition = form.save()
+            composition.save()
+            return HttpResponseRedirect(reverse_lazy('compositions'))
+        return render(request, 'create.html', {'form': form})
+
+
+class GenreCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        context = {'form': GenreForm()}
+        return render(request, 'create.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = GenreForm(request.POST)
+        if form.is_valid():
+            genre = form.save()
+            genre.save()
+            return HttpResponseRedirect(reverse_lazy('dashboard'))
+        return render(request, 'create.html', {'form': form})
+
+
+class AuthorCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        context = {'form': AuthorForm()}
+        return render(request, 'create.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            author = form.save()
+            author.save()
+            return HttpResponseRedirect(reverse_lazy('authors'))
+        return render(request, 'create.html', {'form': form})

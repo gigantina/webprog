@@ -33,7 +33,7 @@
                 <a class="nav-link" href="{% url 'dashboard' %}">{{ user.username }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Добавить исполнение</a>
+                <a class="nav-link" href="{% url 'new-perfomance' %}">Добавить исполнение</a>
             </li>
             {% else %}
             <li class="nav-item">
